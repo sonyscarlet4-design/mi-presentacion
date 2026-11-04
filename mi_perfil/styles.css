@@ -1,0 +1,560 @@
+/* ===================================================
+   PALETA VICTORIANA FEMENINA (VINO TINTO, ROSA ANTIGUO, MARFIL Y BRONCE)
+   =================================================== */
+:root {
+    --bg-main: #FBF7F4;          /* Marfil pergamino suave */
+    --bg-card: #FFFFFF;          /* Fondo de cuadros puro */
+    --bg-soft: #F4E8EC;          /* Rosa antiguo pastel */
+    --text-color: #3B202B;       /* Vino tinto / café oscuro clásico */
+    --text-muted: #7A5C67;      /* Malva envejecido */
+    --accent-color: #9E3F5E;    /* Tinto borgoña elegante */
+    --accent-hover: #7E2F48;    /* Borgoña profundo */
+    --border-color: #E2C4CE;    /* Borde rosado vintage */
+    --shadow: 0 15px 35px rgba(158, 63, 94, 0.08);
+    --transition: all 0.4s ease;
+}
+
+/* MODO NOCHE VICTORIANO */
+body.dark-mode {
+    --bg-main: #180F13 !important;          /* Borgoña noche muy oscuro */
+    --bg-card: #25161D !important;          /* Tarjetas vino oscuro */
+    --bg-soft: #38212B !important;          /* Acento oscuro */
+    --text-color: #F7EBEF !important;       /* Marfil claro */
+    --text-muted: #D1B3BE !important;      /* Rosado tenue */
+    --accent-color: #D47B9A !important;    /* Rosa viejo luminoso */
+    --accent-hover: #E89AB4 !important;
+    --border-color: #4A2E38 !important;    /* Borde oscuro */
+    --shadow: 0 15px 35px rgba(0, 0, 0, 0.5) !important;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Cormorant Garamond', serif;
+    background-color: var(--bg-main);
+    color: var(--text-color);
+    font-size: 1.15rem;
+    line-height: 1.8;
+    transition: var(--transition);
+}
+
+/* Tipografía Victoriana para Títulos y Botones */
+h1, h2, h3, h4, .brand, .btn-submit, .btn-theme, .sheets-table th, .accordion-header {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 1px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.section {
+    margin-bottom: 70px;
+}
+
+/* Títulos con separación elegante */
+.section-title {
+    text-align: center;
+    margin-bottom: 35px;
+    color: var(--accent-color);
+    font-size: 2rem;
+}
+
+.section-title span {
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 8px;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-top: -20px;
+    margin-bottom: 30px;
+    font-size: 1.05rem;
+}
+
+/* Marco o Cuadro con estilo Victoriano (Bordes dobles / finos) */
+.frame-box {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 35px;
+    box-shadow: var(--shadow);
+    position: relative;
+    transition: var(--transition);
+}
+
+.frame-box::after {
+    content: "";
+    position: absolute;
+    top: 6px; left: 6px; right: 6px; bottom: 6px;
+    border: 1px solid var(--border-color);
+    pointer-events: none;
+    opacity: 0.5;
+    border-radius: 6px;
+}
+
+.frame-box:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-3px);
+}
+
+/* NAVBAR VICTORIANO */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 45px;
+    background-color: var(--bg-card);
+    border-bottom: 2px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+}
+
+.brand {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--accent-color);
+}
+
+.nav-menu {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-menu a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.nav-menu a:hover {
+    color: var(--accent-color);
+}
+
+.btn-burguer {
+    display: none;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.btn-theme {
+    padding: 8px 18px;
+    background-color: var(--bg-soft);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn-theme:hover {
+    background-color: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
+}
+
+/* CARRUSEL DE FOTOS */
+.carrusel-section {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    border: 2px solid var(--border-color);
+}
+
+.carrusel {
+    position: relative;
+    height: 420px;
+    width: 100%;
+}
+
+.slide {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.slide.active { opacity: 1; }
+
+.slide img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+}
+
+.slide-caption {
+    position: absolute;
+    bottom: 25px; left: 35px;
+    background: rgba(59, 32, 43, 0.85);
+    color: #FBF7F4;
+    padding: 10px 24px;
+    border-radius: 20px;
+    font-size: 1.05rem;
+    font-family: 'Cinzel', serif;
+}
+
+.carrusel-btn {
+    position: absolute;
+    top: 50%; transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid var(--border-color);
+    font-size: 1.1rem;
+    width: 44px; height: 44px;
+    cursor: pointer;
+    border-radius: 50%;
+    color: var(--text-color);
+    display: flex; align-items: center; justify-content: center;
+    transition: var(--transition);
+}
+
+.carrusel-btn:hover {
+    background: var(--accent-color);
+    color: white;
+}
+
+.prev { left: 20px; }
+.next { right: 20px; }
+
+/* GRID PARA SEPARAR CUADROS */
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    color: var(--accent-color);
+    border-bottom: 1px dashed var(--border-color);
+    padding-bottom: 10px;
+}
+
+.custom-list {
+    list-style: none;
+}
+
+.custom-list li {
+    margin-bottom: 12px;
+    position: relative;
+    padding-left: 22px;
+}
+
+.custom-list li::before {
+    content: "❦";
+    color: var(--accent-color);
+    position: absolute;
+    left: 0;
+    font-size: 0.9rem;
+}
+
+/* HORARIO SHEETS */
+.table-responsive {
+    overflow-x: auto;
+    padding: 20px;
+}
+
+.sheets-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.sheets-table th, .sheets-table td {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.sheets-table th {
+    background-color: var(--bg-soft);
+    color: var(--text-color);
+    font-size: 1.05rem;
+}
+
+.sheets-table td {
+    color: var(--text-muted);
+}
+
+/* ===================================================
+   ACORDEÓN / DESPLEGABLES PARA MÚSICA Y JUEGOS
+   =================================================== */
+.accordion-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.accordion-item {
+    padding: 0 !important; /* Anula el padding general para controlar el header */
+    overflow: hidden;
+}
+
+.accordion-header {
+    width: 100%;
+    padding: 22px 30px;
+    background: transparent;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.accordion-header:hover {
+    background-color: var(--bg-soft);
+    color: var(--accent-color);
+}
+
+.accordion-header .icon {
+    transition: transform 0.3s ease;
+    font-size: 0.9rem;
+    color: var(--accent-color);
+}
+
+/* Contenido oculto por defecto */
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding 0.3s ease;
+    padding: 0 30px;
+    background-color: var(--bg-main);
+    border-top: 1px solid transparent;
+}
+
+/* Clase activa cuando se despliega */
+.accordion-item.active .accordion-content {
+    max-height: 500px; /* Altura suficiente para mostrar las bandas/juegos */
+    padding: 20px 30px 25px 30px;
+    border-top: 1px solid var(--border-color);
+}
+
+.accordion-item.active .icon {
+    transform: rotate(180deg);
+}
+
+.sub-item {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed var(--border-color);
+}
+
+.sub-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.sub-item h4 {
+    font-size: 1.15rem;
+    color: var(--accent-color);
+    margin-bottom: 3px;
+}
+
+.sub-item p {
+    font-size: 1rem;
+    color: var(--text-muted);
+}
+
+/* FRASE Y HABILIDADES */
+.quote-box {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.quote-text {
+    font-size: 1.4rem;
+    font-style: italic;
+    color: var(--text-color);
+}
+
+.quote-author {
+    margin-top: 15px;
+    font-size: 1.05rem;
+    color: var(--accent-color);
+    font-weight: 700;
+}
+
+.skill-bar {
+    margin-top: 18px;
+}
+
+.skill-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.progress {
+    height: 10px;
+    background-color: var(--bg-soft);
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: var(--accent-color);
+    border-radius: 5px;
+}
+
+/* FORMULARIO DE CONTRATACIÓN */
+.form-container {
+    max-width: 750px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.form-container h2 {
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+
+.form-container p {
+    color: var(--text-muted);
+    margin-bottom: 30px;
+    font-style: italic;
+}
+
+.form-group {
+    margin-bottom: 22px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 1.05rem;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 14px 18px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background-color: var(--bg-main);
+    color: var(--text-color);
+    font-family: inherit;
+    font-size: 1.05rem;
+    outline: none;
+    transition: var(--transition);
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(158, 63, 94, 0.15);
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-submit:hover {
+    background-color: var(--accent-hover);
+}
+
+.msg-error {
+    color: #991b1b;
+    background-color: #fee2e2;
+    padding: 12px;
+    border-radius: 6px;
+    margin-top: 20px;
+    font-weight: 600;
+}
+
+.msg-exito {
+    color: #166534;
+    background-color: #dcfce7;
+    padding: 12px;
+    border-radius: 6px;
+    margin-top: 20px;
+    font-weight: 600;
+}
+
+/* FOOTER */
+.footer {
+    text-align: center;
+    padding: 40px;
+    background-color: var(--bg-card);
+    border-top: 2px solid var(--border-color);
+    margin-top: 80px;
+    color: var(--text-muted);
+}
+
+.social-links {
+    margin-top: 12px;
+}
+
+.social-links a {
+    color: var(--accent-color);
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: var(--transition);
+}
+
+.social-links a:hover {
+    opacity: 0.7;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+    .grid-2 {
+        grid-template-columns: 1fr;
+    }
+    
+    .btn-burguer {
+        display: block;
+    }
+
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%; left: 0;
+        width: 100%;
+        background-color: var(--bg-card);
+        padding: 25px;
+        border-bottom: 2px solid var(--border-color);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+
+    .nav-menu.show {
+        display: flex;
+    }
+}

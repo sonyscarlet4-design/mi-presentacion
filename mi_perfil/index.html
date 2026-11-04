@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luciana Castillo | Perfil Victoriano</title>
+    <!-- Tipografía Victoriana / Elegante desde Google Fonts (Cinzel y Cormorant Garamond) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
+    <!-- Vinculación del CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- NAVBAR VICTORIANO FLOTANTE -->
+    <header class="navbar">
+        <div class="brand">❦ Luciana Castillo ❦</div>
+        
+        <button id="burguerBtn" class="btn-burguer" aria-label="Abrir Menú">☰</button>
+        
+        <nav id="navMenu" class="nav-menu">
+            <a href="#inicio">Inicio</a>
+            <a href="#perfil">Sobre Mí</a>
+            <a href="#horario">Horario</a>
+            <a href="#favoritos">Colección</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+
+        <button id="themeBtn" class="btn-theme">🌙 Modo Noche</button>
+    </header>
+
+    <main class="container">
+
+        <!-- 1. CARRUSEL DE 3 FOTOS -->
+        <section id="inicio" class="section carrusel-section">
+            <div class="carrusel">
+                <div class="slide active">
+                    <img src="dominic Image 2026-11-03 at 9.18.02 PM.jpeg" alt="Sistemas">
+                    <div class="slide-caption">Mi bebe </div>
+                </div>
+                <div class="slide">
+                    <img src="WhatsApp Image 2026-11-03 at 9.18.01 PM.jpeg" alt="Arte y Estética">
+                    <div class="slide-caption"> Yo </div>
+                </div>
+                <div class="slide">
+                    <img src="WhatsApp Image 2026-11-03 at 9.18.02 PM.jpeg" alt="Innovación">
+                    <div class="slide-caption"> Mi beba </div>
+                </div>
+                <button class="carrusel-btn prev" id="prevBtn">❮</button>
+                <button class="carrusel-btn next" id="nextBtn">❯</button>
+            </div>
+        </section>
+
+        <!-- 2. PASATIEMPOS E INTERESES (CUADROS SEPARADOS) -->
+        <section id="perfil" class="section">
+            <h2 class="section-title"><span> Sobre Mi </span></h2>
+            <div class="grid-2">
+                <div class="card frame-box">
+                    <h3>Mis Pasatiempos</h3>
+                    <ul class="custom-list">
+                        <li>Escuchar música (Rock, Indie y K-Pop).</li>
+                        <li>Ver películas y series de época o misterio.</li>
+                        <li>Dibujar un poco en mis ratos libres.</li>
+                        <li>Compartir con mis gatitos y mi perrita.</li>
+                        <li>Preparar recetas de cocina reconfortantes.</li>
+                    </ul>
+                </div>
+                <div class="card frame-box">
+                    <h3>Intereses</h3>
+                    <ul class="custom-list">
+                        <li>Aprender nuevas recetas.</li>
+                        <li>Aprender mas de c++.</li>
+                        <li>La fotografia.</li>
+                        <li>Ir a cafeterias.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. HORARIO DIARIO (ESTILO SHEETS EN CUADRO) -->
+        <section id="horario" class="section">
+            <h2 class="section-title"><span> Horario & Rutina </span></h2>
+            <div class="frame-box table-responsive">
+                <table class="sheets-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Lunes a Viernes</th>
+                            <th>Sábado & Domingo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Mañana</strong></td>
+                            <td>Clases universitarias y asignaturas de sistemas</td>
+                            <td>Prácticas de cocina</td>
+                        </tr> 
+                        <tr>
+                            <td><strong>Tarde</strong></td>
+                            <td> tareas</td>
+                            <td>Paseo con mi perrita, gatitos y dibujar</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Noche</strong></td>
+                            <td>Repaso y descanso con música</td>
+                            <td>Series, películas y relax total</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 4. COLECCIÓN DESPLEGABLE (MÚSICA Y JUEGOS EN CUADROS INDEPENDIENTES) -->
+        <section id="favoritos" class="section">
+            <h2 class="section-title"><span> Musica y Juegos Favoritos 
+
+            </span></h2>
+            <p class="section-subtitle">Haz clic en cada categoría para desplegar su contenido</p>
+
+            <div class="accordion-container">
+                
+                <!-- Categoría 1: Rock -->
+                <div class="accordion-item frame-box">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>🎸 Música Rock</span>
+                        <span class="icon">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="sub-item">
+                            <h4>Bad Omens</h4>
+                            <p>Canción predilecta: <em>Just Pretend</em></p>
+                        </div>
+                        <div class="sub-item">
+                            <h4>Bring Me The Horizon</h4>
+                            <p>Canción predilecta: <em>1x1</em></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Categoría 2: Indie -->
+                <div class="accordion-item frame-box">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>🎧 Música Indie</span>
+                        <span class="icon">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="sub-item">
+                            <h4>Zoé</h4>
+                            <p>Canción predilecta: <em>Azul</em></p>
+                        </div>
+                        <div class="sub-item">
+                            <h4>Siddhartha</h4>
+                            <p>Canción predilecta: <em>Tarde</em></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Categoría 3: K-Pop -->
+                <div class="accordion-item frame-box">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>⭐ Música K-Pop</span>
+                        <span class="icon">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="sub-item">
+                            <h4>BTS</h4>
+                            <p>Canción predilecta: <em>Love is Not Over</em></p>
+                        </div>
+                        <div class="sub-item">
+                            <h4>GOT7</h4>
+                            <p>Canción predilecta: <em>If You Do</em></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Categoría 4: Videojuegos (Con Tekken y Call of Duty añadidos) -->
+                <div class="accordion-item frame-box">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>🎮 Videojuegos</span>
+                        <span class="icon">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="sub-item">
+                            <h4>Left 4 Dead</h4>
+                            <p>Acción y supervivencia en equipo.</p>
+                        </div>
+                        <div class="sub-item">
+                            <h4>League of Legends (LoL)</h4>
+                            <p>Estrategia y combate multijugador.</p>
+                        </div>
+                        <div class="sub-item">
+                            <h4>Portal 1</h4>
+                            <p>Puzles de lógica y física cuántica.</p>
+                        </div>
+                        <div class="sub-item">
+                            <h4>Tekken</h4>
+                            <p>Combate clásico de artes marciales.</p>
+                        </div>
+                        <div class="sub-item">
+                            <h4>Call of Duty</h4>
+                            <p>Acción táctica y disparos en primera persona.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 5. FRASE Y HABILIDADES EN CUADROS SEPARADOS -->
+        <section id="habilidades" class="section grid-2">
+            <div class="card frame-box quote-box">
+                <p class="quote-text">"Creando tecnología paso a paso, con pasión y café."</p>
+                <span class="quote-author">— Luciana Castillo</span>
+            </div>
+            <div class="card frame-box">
+                <h3>Habilidades Técnicas</h3>
+                <div class="skill-bar">
+                    <div class="skill-info"><span>HTML / CSS</span><span>85%</span></div>
+                    <div class="progress"><div class="progress-fill" style="width: 85%;"></div></div>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-info"><span>JavaScript (DOM)</span><span>75%</span></div>
+                    <div class="progress"><div class="progress-fill" style="width: 75%;"></div></div>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-info"><span>Bases de Datos (SQL)</span><span>70%</span></div>
+                    <div class="progress"><div class="progress-fill" style="width: 70%;"></div></div>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-info"><span>C++ / Lógica</span><span>80%</span></div>
+                    <div class="progress"><div class="progress-fill" style="width: 80%;"></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. FORMULARIO DE CONTRATACIÓN (EN SU PROPIO CUADRO) -->
+        <section id="contacto" class="section">
+            <div class="form-container frame-box">
+                <h2>❦ Contratación & Colaboración ❦</h2>
+                <p>Envíame un mensaje y te responderé con la elegancia requerida.</p>
+                
+                <form id="hireForm">
+                    <div class="form-group">
+                        <label for="nombre">Nombre Completo:</label>
+                        <input type="text" id="nombre" placeholder="Ej. Carlos Mendoza">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="correo">Correo Electrónico:</label>
+                        <input type="email" id="correo" placeholder="ejemplo@correo.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje o Propuesta:</label>
+                        <textarea id="mensaje" rows="4" placeholder="Describe brevemente tu propuesta..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Enviar Misiva</button>
+                </form>
+
+                <div id="alertaBox"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>© 2026 Luciana Castillo — Estudiante de Ingeniería de Sistemas</p>
+        <div class="social-links">
+            <a href="https://instagram.com" target="_blank">Instagram</a>
+        </div>
+    </footer>
+
+    <!-- Archivo JS -->
+    <script src="script.js" defer></script>
+</body>
+</html>
