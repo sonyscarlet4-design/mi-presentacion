@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Coctelería | Karaoke Green</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="rpg-app-body" style="height: 100dvh; overflow: hidden;">
+
+    <header class="rpg-top-hud" style="height: 50px;">
+        <div class="rpg-player-info" onclick="window.location.href='index.html'" style="cursor: pointer;">
+            <div class="rpg-avatar-frame" style="border-color: #ff007f; width: 32px; height: 32px;">
+                <img src="verdek.webp" alt="Luciana" loading="lazy">
+            </div>
+            <div class="rpg-player-text">
+                <span class="rpg-name" style="color: #ff007f; font-size: 0.75rem;">Karaoke Green</span>
+                <span class="rpg-badge" style="background: rgba(255, 0, 127, 0.2); color: #ff007f; border-color: #ff007f; font-size: 0.5rem;">🍸 Cocteles</span>
+            </div>
+        </div>
+        <div class="rpg-top-actions">
+            <button type="button" data-modal="carrito-win" class="rpg-icon-btn" style="background: #25d366; color: #fff; border: none; width: auto; padding: 0 8px; font-size: 0.7rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 4px;">
+                <i class="fab fa-whatsapp"></i> Carrito (<span id="contadorCarrito">0</span>)
+            </button>
+        </div>
+    </header>
+
+    <main class="rpg-main-screen" style="height: calc(100dvh - 105px); display: flex; flex-direction: column; justify-content: flex-start; align-items: center; padding: 10px; overflow-y: auto; gap: 8px;">
+        
+        <div class="showcase-box" style="width: 100%; max-width: 480px; text-align: center; border-color: #ff007f; background: rgba(30, 17, 26, 0.95); padding: 6px;">
+            <h1 class="rpg-main-title" style="color: #ff007f; font-size: 0.95rem; margin: 0;">🍸 COCTELERÍA & BEBIDAS</h1>
+            <p class="rpg-main-subtitle" style="color: #fceee9; font-size: 0.65rem; margin: 2px 0 0 0;">Refresca tu noche con nuestros cocteles</p>
+        </div>
+
+        <div class="frame-box" style="width: 100%; max-width: 480px; padding: 8px 10px; border-color: #ff007f; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <h4 style="margin: 0; color: #ff007f; font-family: var(--font-title); font-size: 0.75rem;">Mojito Tradicional</h4>
+                <p style="margin: 2px 0 0 0; font-size: 0.62rem; color: var(--text-muted);">Ron, hierbabuena fresca, lima y soda.</p>
+                <span style="color: #f3c66f; font-size: 0.75rem; font-weight: bold;">35.00 Bs.</span>
+            </div>
+            <button type="button" class="promo-add-btn" data-item="Mojito Tradicional" data-price="35" style="background: #ff007f; color: #fff; border: none; padding: 5px 8px; border-radius: 6px; font-weight: bold; font-size: 0.6rem; cursor: pointer;">+ Pedir</button>
+        </div>
+
+        <div class="frame-box" style="width: 100%; max-width: 480px; padding: 8px 10px; border-color: #ff007f; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <h4 style="margin: 0; color: #ff007f; font-family: var(--font-title); font-size: 0.75rem;">Fernet Branca (Jarra)</h4>
+                <p style="margin: 2px 0 0 0; font-size: 0.62rem; color: var(--text-muted);">El clásico argentino bien frío con Coca-Cola.</p>
+                <span style="color: #f3c66f; font-size: 0.75rem; font-weight: bold;">90.00 Bs.</span>
+            </div>
+            <button type="button" class="promo-add-btn" data-item="Fernet Branca (Jarra)" data-price="90" style="background: #ff007f; color: #fff; border: none; padding: 5px 8px; border-radius: 6px; font-weight: bold; font-size: 0.6rem; cursor: pointer;">+ Pedir</button>
+        </div>
+
+        <div class="frame-box" style="width: 100%; max-width: 480px; padding: 8px 10px; border-color: #ff007f; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <h4 style="margin: 0; color: #ff007f; font-family: var(--font-title); font-size: 0.75rem;">Cuba Libre de la Casa</h4>
+                <p style="margin: 2px 0 0 0; font-size: 0.62rem; color: var(--text-muted);">Ron especial, limón y refresco de cola.</p>
+                <span style="color: #f3c66f; font-size: 0.75rem; font-weight: bold;">30.00 Bs.</span>
+            </div>
+            <button type="button" class="promo-add-btn" data-item="Cuba Libre de la Casa" data-price="30" style="background: #ff007f; color: #fff; border: none; padding: 5px 8px; border-radius: 6px; font-weight: bold; font-size: 0.6rem; cursor: pointer;">+ Pedir</button>
+        </div>
+
+    </main>
+
+    <!-- VENTANA MODAL DEL CARRITO / PEDIDOS -->
+    <div id="carrito-win" class="rpg-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center; padding: 15px;">
+        <div class="frame-box" style="width: 100%; max-width: 400px; background: #1a0f18; border-color: #ff007f; padding: 15px; display: flex; flex-direction: column; max-height: 80vh;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                <h3 style="font-family: var(--font-title); font-size: 0.85rem; color: #ff007f; margin: 0;">🛒 Cesta de Coctelería</h3>
+                <button type="button" class="close-modal-btn" style="background: transparent; border: none; color: #fff; font-size: 1rem; cursor: pointer;">✕</button>
+            </div>
+            <div id="carritoItemsList" style="flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 4px; margin-bottom: 10px;">
+                <p style="color: var(--text-muted); text-align: center; margin: 15px 0; font-size: 0.75rem;">Tu carrito está vacío</p>
+            </div>
+            <div style="border-top: 1px solid rgba(255,0,127,0.3); padding-top: 8px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                <span style="font-size: 0.8rem; font-family: var(--font-title); color: #fceee9;">Total estimado:</span>
+                <span id="carritoTotal" style="font-size: 0.85rem; font-family: var(--font-title); color: #ff007f; font-weight: bold;">Bs. 0.00</span>
+            </div>
+            <button id="enviarWhatsAppBtn" type="button" style="width: 100%; background: #25d366; color: #fff; border: none; padding: 8px; border-radius: 6px; font-weight: bold; font-family: var(--font-title); font-size: 0.75rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                <i class="fab fa-whatsapp"></i> ENVIAR PEDIDO A WHATSAPP
+            </button>
+        </div>
+    </div>
+
+    <nav class="rpg-bottom-nav" style="height: 55px;">
+        <button class="bottom-nav-item" onclick="window.location.href='index.html'" type="button">
+            <span class="nav-icon" style="font-size: 0.85rem;">🎤</span>
+            <span class="nav-text" style="font-size: 0.5rem;">Karaoke</span>
+        </button>
+        <button class="bottom-nav-item" onclick="window.location.href='promos.html'" type="button">
+            <span class="nav-icon" style="font-size: 0.85rem;">🔥</span>
+            <span class="nav-text" style="font-size: 0.5rem;">Comida & Promos</span>
+        </button>
+        <button class="bottom-nav-item active" type="button">
+            <span class="nav-icon" style="font-size: 0.85rem;">🍸</span>
+            <span class="nav-text" style="font-size: 0.5rem;">Coctelería</span>
+        </button>
+        <button class="bottom-nav-item" data-modal="carrito-win" type="button">
+            <span class="nav-icon" style="font-size: 0.85rem;">🛒</span>
+            <span class="nav-text" style="font-size: 0.5rem;">Carrito</span>
+        </button>
+    </nav>
+
+    <script>
+       document.addEventListener('DOMContentLoaded', function () {
+    // Carga el carrito compartido global usando localStorage
+    let carrito = JSON.parse(localStorage.getItem('karaokeCarrito')) || [];
+
+    const carritoItemsList = document.getElementById('carritoItemsList');
+    const carritoTotal = document.getElementById('carritoTotal');
+    const contadorCarrito = document.getElementById('contadorCarrito');
+    const enviarWhatsAppBtn = document.getElementById('enviarWhatsAppBtn');
+
+    function guardarYRenderizar() {
+        localStorage.setItem('karaokeCarrito', JSON.stringify(carrito));
+        renderCarrito();
+    }
+
+    // Control global para abrir y cerrar el modal del carrito
+    document.addEventListener('click', function (e) {
+        const trigger = e.target.closest('[data-modal]');
+        if (trigger) {
+            const modal = document.getElementById(trigger.getAttribute('data-modal'));
+            if (modal) modal.style.display = 'flex';
+        }
+        const closeBtn = e.target.closest('.close-modal-btn');
+        if (closeBtn) {
+            const modal = closeBtn.closest('.rpg-modal');
+            if (modal) modal.style.display = 'none';
+        }
+    });
+
+    function renderCarrito() {
+        const totalUnidades = carrito.reduce((sum, item) => sum + item.cantidad, 0);
+        if (contadorCarrito) contadorCarrito.textContent = totalUnidades;
+        if (!carritoItemsList) return;
+
+        carritoItemsList.innerHTML = '';
+
+        if (carrito.length === 0) {
+            const pVacio = document.createElement('p');
+            pVacio.style.cssText = 'color: var(--text-muted); text-align: center; margin: 15px 0; font-size: 0.75rem;';
+            pVacio.textContent = 'Tu carrito está vacío';
+            carritoItemsList.appendChild(pVacio);
+            if (carritoTotal) carritoTotal.textContent = 'Bs. 0.00';
+            return;
+        }
+
+        let total = 0;
+
+        carrito.forEach((prod, index) => {
+            const subtotal = prod.precio * prod.cantidad;
+            total += subtotal;
+
+            const row = document.createElement('div');
+            row.style.cssText = 'display: flex; justify-content: space-between; align-items: center; background: rgba(30, 17, 26, 0.6); padding: 6px 8px; border-radius: 6px; margin-bottom: 4px; border: 1px solid rgba(139, 83, 110, 0.3);';
+
+            // Sanitización estricta anti-XSS usando .textContent
+            const infoSpan = document.createElement('span');
+            infoSpan.style.cssText = 'font-size: 0.75rem; color: var(--text-light);';
+            infoSpan.textContent = `${prod.nombre} (x${prod.cantidad}) - Bs. ${subtotal.toFixed(2)}`;
+
+            const removeBtn = document.createElement('button');
+            removeBtn.type = 'button';
+            removeBtn.textContent = '🗑️';
+            removeBtn.style.cssText = 'background: transparent; border: none; color: #ff5c5c; cursor: pointer; font-size: 0.9rem;';
+            removeBtn.addEventListener('click', () => {
+                carrito.splice(index, 1);
+                guardarYRenderizar();
+            });
+
+            row.appendChild(infoSpan);
+            row.appendChild(removeBtn);
+            carritoItemsList.appendChild(row);
+        });
+
+        if (carritoTotal) carritoTotal.textContent = `Bs. ${total.toFixed(2)}`;
+    }
+
+    // Escucha global para cualquier botón que agregue productos (.promo-add-btn)
+    document.addEventListener('click', function (e) {
+        const promoBtn = e.target.closest('.promo-add-btn');
+        if (promoBtn) {
+            const nombre = promoBtn.getAttribute('data-item');
+            const precio = parseFloat(promoBtn.getAttribute('data-price')) || 0;
+
+            const existente = carrito.find(p => p.nombre === nombre);
+            if (existente) {
+                existente.cantidad += 1;
+            } else {
+                carrito.push({ nombre, precio, cantidad: 1 });
+            }
+            guardarYRenderizar();
+
+            const textoOriginal = promoBtn.textContent;
+            promoBtn.textContent = '¡Agregado! ✓';
+            setTimeout(() => { promoBtn.textContent = textoOriginal; }, 1000);
+        }
+    });
+
+    // Envío del pedido unificado a WhatsApp de forma segura
+    if (enviarWhatsAppBtn) {
+        enviarWhatsAppBtn.addEventListener('click', function () {
+            if (carrito.length === 0) {
+                alert('Tu carrito está vacío. Agrega canciones, comida o cocteles primero.');
+                return;
+            }
+
+            let mensaje = '¡Hola Karaoke Green! 🎤🍔🍸 Quiero confirmar mi pedido:\n\n';
+            let total = 0;
+
+            carrito.forEach(prod => {
+                const subtotal = prod.precio * prod.cantidad;
+                total += subtotal;
+                mensaje += `▪️ ${prod.nombre} x${prod.cantidad} - Bs. ${subtotal.toFixed(2)}\n`;
+            });
+
+            mensaje += `\n💰 *TOTAL:* Bs. ${total.toFixed(2)}\n\n¡Quedo atento/a! ✨`;
+            window.open(`https://wa.me/59175273771?text=${encodeURIComponent(mensaje)}`, '_blank');
+        });
+    }
+
+    // Renderiza el estado actual al abrir la página
+    renderCarrito();
+});
+    </script>
+    <script>
+        // Registro del Service Worker para soporte offline
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .catch(err => console.log('Error Service Worker:', err));
+            });
+        }
+    </script>
+</body>
+</html>

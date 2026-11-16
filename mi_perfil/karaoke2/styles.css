@@ -1,0 +1,322 @@
+/* ==========================================
+   VARIABLES & PALETA RPG NEÓN (KARAOKE GREEN)
+   ========================================== */
+:root {
+    --bg-dark: #120a14;
+    --bg-panel: rgba(30, 17, 26, 0.95);
+    --bg-card: rgba(47, 25, 37, 0.85);
+    --accent-pink: #ff007f;
+    --accent-pink-glow: rgba(255, 0, 127, 0.35);
+    --accent-gold: #f3c66f;
+    --accent-whatsapp: #25d366;
+    --text-light: #fceee9;
+    --text-muted: #b89aa8;
+    --border-rpg: #ff007f;
+    --font-title: 'Cinzel', serif;
+    --font-body: 'Cormorant Garamond', serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body.rpg-app-body {
+    background-color: var(--bg-dark);
+    background-image: radial-gradient(circle at 50% 20%, #2a1224 0%, #120a14 85%);
+    color: var(--text-light);
+    font-family: var(--font-body);
+    height: 100dvh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+}
+
+/* ==========================================
+   1. HUD SUPERIOR RPG
+   ========================================== */
+.rpg-top-hud {
+    height: 50px;
+    background: rgba(18, 10, 20, 0.98);
+    border-bottom: 1.5px solid var(--border-rpg);
+    box-shadow: 0 2px 12px var(--accent-pink-glow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 12px;
+    z-index: 100;
+    flex-shrink: 0;
+}
+
+.rpg-player-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.rpg-avatar-frame {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 2px solid var(--accent-pink);
+    box-shadow: 0 0 8px var(--accent-pink-glow);
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.rpg-avatar-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.rpg-player-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.rpg-name {
+    font-family: var(--font-title);
+    font-weight: 700;
+    color: var(--accent-pink);
+    letter-spacing: 0.5px;
+    line-height: 1;
+}
+
+.rpg-badge {
+    display: inline-block;
+    padding: 1px 6px;
+    border-radius: 10px;
+    border: 1px solid var(--accent-pink);
+    background: rgba(255, 0, 127, 0.15);
+    color: var(--accent-pink);
+    font-size: 0.55rem;
+    font-weight: 600;
+    width: fit-content;
+}
+
+.rpg-top-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.rpg-icon-btn {
+    border-radius: 8px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.rpg-icon-btn:active {
+    transform: scale(0.94);
+}
+
+/* ==========================================
+   TARJETAS Y CATÁLOGO DEL KARAOKE RESPONSIVO
+   ========================================== */
+.lista-canciones {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-right: 4px;
+    width: 100%;
+}
+
+.tarjeta-pista {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    background: var(--bg-card);
+    border: 1.5px solid var(--border-rpg);
+    border-radius: 8px;
+    width: 100%;
+    transition: transform 0.15s ease, border-color 0.2s ease;
+}
+
+.tarjeta-pista:hover {
+    border-color: var(--accent-gold);
+}
+
+.tarjeta-pista img {
+    width: 44px;
+    height: 44px;
+    object-fit: cover;
+    border-radius: 6px;
+    flex-shrink: 0;
+    border: 1px solid var(--accent-pink);
+}
+
+.info-pista {
+    flex: 1;
+    min-width: 0;
+    text-align: left;
+}
+
+.info-pista h4 {
+    margin: 0;
+    font-family: var(--font-title);
+    color: var(--accent-pink);
+    font-size: 0.8rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.info-pista p {
+    margin: 2px 0 0 0;
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.btn-agregar-cola,
+.promo-add-btn {
+    background: var(--accent-pink);
+    color: #fff;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 0.65rem;
+    flex-shrink: 0;
+    font-family: var(--font-title);
+    transition: transform 0.15s ease, background-color 0.2s ease;
+}
+
+.btn-agregar-cola:active,
+.promo-add-btn:active {
+    transform: scale(0.93);
+}
+
+/* Media Query específica para asegurar un diseño óptimo en pantallas más amplias */
+@media (min-width: 768px) {
+    .tarjeta-pista {
+        padding: 10px 14px;
+    }
+    .info-pista h4 {
+        font-size: 0.85rem;
+    }
+    .info-pista p {
+        font-size: 0.72rem;
+    }
+}
+/* Formularios e Inputs */
+input, select {
+    font-family: var(--font-body);
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus, select:focus {
+    border-color: var(--accent-gold) !important;
+    box-shadow: 0 0 8px rgba(243, 198, 111, 0.35);
+}
+
+/* ==========================================
+   3. SCROLLBAR PERSONALIZADO (CATÁLOGO PISTAS)
+   ========================================== */
+.lista-canciones::-webkit-scrollbar,
+.rpg-main-screen::-webkit-scrollbar {
+    width: 4px;
+}
+
+.lista-canciones::-webkit-scrollbar-track,
+.rpg-main-screen::-webkit-scrollbar-track {
+    background: rgba(18, 10, 20, 0.4);
+    border-radius: 4px;
+}
+
+.lista-canciones::-webkit-scrollbar-thumb,
+.rpg-main-screen::-webkit-scrollbar-thumb {
+    background: var(--accent-pink);
+    border-radius: 4px;
+}
+
+/* Tarjetas de Canciones y Menús */
+.tarjeta-pista,
+.item-menu {
+    transition: transform 0.15s ease, border-color 0.2s ease;
+}
+
+.tarjeta-pista:hover,
+.item-menu:hover {
+    border-color: var(--accent-gold) !important;
+}
+
+.promo-add-btn {
+    transition: transform 0.15s ease, background-color 0.2s ease;
+    min-height: 28px;
+}
+
+.promo-add-btn:active {
+    transform: scale(0.93);
+}
+
+/* ==========================================
+   4. VENTANA MODAL DEL CARRITO
+   ========================================== */
+.rpg-modal {
+    backdrop-filter: blur(4px);
+    animation: fadeInModal 0.2s ease-out;
+}
+
+@keyframes fadeInModal {
+    from { opacity: 0; transform: scale(0.96); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* ==========================================
+   5. BARRA DE NAVEGACIÓN INFERIOR FIJA
+   ========================================== */
+.rpg-bottom-nav {
+    height: 55px;
+    background: rgba(18, 10, 20, 0.98);
+    border-top: 1.5px solid var(--border-rpg);
+    box-shadow: 0 -2px 12px var(--accent-pink-glow);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 6px;
+    z-index: 100;
+    flex-shrink: 0;
+}
+
+.bottom-nav-item {
+    flex: 1;
+    height: 100%;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.15s ease;
+}
+
+.bottom-nav-item.active {
+    color: var(--accent-pink);
+    text-shadow: 0 0 8px var(--accent-pink-glow);
+    border-top: 2px solid var(--accent-pink);
+}
+
+.bottom-nav-item:active {
+    transform: scale(0.92);
+}
+
+.nav-text {
+    font-family: var(--font-title);
+    font-weight: 700;
+    letter-spacing: 0.3px;
+}

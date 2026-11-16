@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Karaoke Green | PWA Móvil</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="rpg-app-body" style="height: 100dvh; overflow: hidden;">
+
+    <header class="rpg-top-hud" style="height: 50px;">
+     <div class="rpg-player-info" onclick="window.location.href='index.html'" style="cursor: pointer;"></div>
+            <div class="rpg-avatar-frame" style="border-color: #ff007f; width: 32px; height: 32px;">
+                <img src="verdek.webp" alt="Luciana" loading="lazy">
+            </div>
+            <div class="rpg-player-text">
+                <span class="rpg-name" style="color: #ff007f; font-size: 0.75rem;">Karaoke Green</span>
+                <span class="rpg-badge" style="background: rgba(255, 0, 127, 0.2); color: #ff007f; border-color: #ff007f; font-size: 0.5rem;">📍 Sopocachi</span>
+            </div>
+        </div>
+        <div class="rpg-top-actions">
+            <a href="https://wa.me/59175273771?text=Hola,%20quiero%20hacer%20una%20consulta%20sobre%20Karaoke%20Green" target="_blank" class="rpg-icon-btn" style="width: 28px; height: 28px; font-size: 0.75rem; background: #25d366; color: #fff; border: none; text-decoration: none; display: flex; align-items: center; justify-content: center;" title="WhatsApp Directo">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
+    </header>
+
+    <main class="rpg-main-screen" style="height: calc(100dvh - 105px); display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding: 10px; overflow: hidden;">
+        
+        <div class="showcase-box" style="width: 100%; max-width: 480px; text-align: center; border-color: #ff007f; background: rgba(30, 17, 26, 0.95); padding: 8px;">
+            <h1 class="rpg-main-title" style="color: #ff007f; font-size: 1rem; margin: 0;">¡LIBERA TU VOZ!</h1>
+            <p class="rpg-main-subtitle" style="color: #fceee9; font-weight: bold; font-size: 0.7rem; margin: 2px 0 0 0;">CANTA, TOMA Y DISFRUTA</p>
+        </div>
+
+        <!-- FORMULARIO CON ENVÍO A WHATSAPP -->
+        <div class="frame-box" style="width: 100%; max-width: 480px; padding: 10px; border-color: #ff007f;">
+            <h3 style="font-family: var(--font-title); font-size: 0.75rem; color: #ff007f; margin: 0 0 6px 0;">📅 Reserva Tu Sala VIP (WhatsApp)</h3>
+            <form id="reservaWhatsAppForm" style="display: flex; flex-direction: column; gap: 6px;">
+                <div style="display: flex; gap: 6px;">
+                    <input type="text" id="nombreReserva" placeholder="Tu nombre completo" required style="flex: 1; padding: 6px; border: 1px solid #ff007f; border-radius: 4px; background: rgba(0,0,0,0.3); color: #fff; font-size: 0.7rem;">
+                    <select id="salaReserva" style="flex: 1; padding: 6px; border: 1px solid #ff007f; border-radius: 4px; background: #2a1620; color: #fff; font-size: 0.7rem;">
+                        <option value="VIP Disco Room (80 Bs/h)">VIP Disco Room (80 Bs/h)</option>
+                        <option value="Standard Room (60 Bs/h)">Standard Room (60 Bs/h)</option>
+                        <option value="Mega Suite (120 Bs/h)">Mega Suite (120 Bs/h)</option>
+                    </select>
+                </div>
+                <button type="submit" style="width: 100%; background: #25d366; color: #fff; border: none; padding: 6px; border-radius: 4px; font-weight: bold; font-family: var(--font-title); font-size: 0.7rem; cursor: pointer;">
+                    <i class="fab fa-whatsapp"></i> ENVIAR RESERVA A WHATSAPP
+                </button>
+            </form>
+        </div>
+
+        <!-- CATÁLOGO AMPLIO CON SCROLL INTERNO -->
+        <div style="width: 100%; max-width: 480px; flex: 1; display: flex; flex-direction: column; min-height: 0;">
+            <h3 style="font-family: var(--font-title); font-size: 0.75rem; color: var(--accent-gold); margin: 0 0 6px 0;"><i class="fas fa-music"></i> Catálogo Ampliado de Pistas</h3>
+            <div id="catalogoKaraoke" class="lista-canciones" style="flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 6px; padding-right: 4px;"></div>
+        </div>
+
+    </main>
+
+    <!-- VENTANA MODAL DEL CARRITO -->
+    <div id="carrito-win" class="rpg-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center; padding: 15px;">
+        <div class="frame-box" style="width: 100%; max-width: 400px; background: #1a0f18; border-color: #ff007f; padding: 15px; display: flex; flex-direction: column; max-height: 80vh;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                <h3 style="font-family: var(--font-title); font-size: 0.85rem; color: #ff007f; margin: 0;">🛒 Cesta / Cola de Pedidos</h3>
+                <button type="button" class="close-modal-btn" style="background: transparent; border: none; color: #fff; font-size: 1rem; cursor: pointer;">✕</button>
+            </div>
+            <div id="carritoItemsList" style="flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 4px; margin-bottom: 10px;">
+                <p style="color: var(--text-muted); text-align: center; margin: 15px 0; font-size: 0.75rem;">Tu carrito está vacío</p>
+            </div>
+            <div style="border-top: 1px solid rgba(255,0,127,0.3); padding-top: 8px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                <span style="font-size: 0.8rem; font-family: var(--font-title); color: #fceee9;">Total estimado:</span>
+                <span id="carritoTotal" style="font-size: 0.85rem; font-family: var(--font-title); color: #ff007f; font-weight: bold;">Bs. 0.00</span>
+            </div>
+            <button id="enviarWhatsAppBtn" type="button" style="width: 100%; background: #25d366; color: #fff; border: none; padding: 8px; border-radius: 6px; font-weight: bold; font-family: var(--font-title); font-size: 0.75rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                <i class="fab fa-whatsapp"></i> ENVIAR PEDIDO A WHATSAPP
+            </button>
+        </div>
+    </div>
+
+    <nav class="rpg-bottom-nav" style="height: 55px;">
+        <button class="bottom-nav-item active" type="button">
+            <span class="nav-icon" style="font-size: 0.85rem;">🎤</span>
+            <span class="nav-text" style="font-size: 0.5rem;">Karaoke</span>
+        </button>
+        <button class="bottom-nav-item" onclick="window.location.href='promos.html'" type="button">
+            <span class="nav-icon" style="font-size: 0.85rem;">🔥</span>
+            <span class="nav-text" style="font-size: 0.5rem;">Comida & Promos</span>
+        </button>
+        <button class="bottom-nav-item" onclick="window.location.href='cocteles.html'" type="button">
+            <span class="nav-icon" style="font-size: 0.85rem;">🍸</span>
+            <span class="nav-text" style="font-size: 0.5rem;">Coctelería</span>
+        </button>
+        <button class="bottom-nav-item" data-modal="carrito-win" type="button">
+            <span class="nav-icon" style="font-size: 0.85rem;">🛒</span>
+            <span class="nav-text" style="font-size: 0.5rem;">Carrito</span>
+        </button>
+    </nav>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Control de apertura y cierre de modales
+            document.addEventListener('click', function(e) {
+                const trigger = e.target.closest('[data-modal]');
+                if (trigger) {
+                    const modalId = trigger.getAttribute('data-modal');
+                    const modal = document.getElementById(modalId);
+                    if (modal) modal.style.display = 'flex';
+                }
+                const closeBtn = e.target.closest('.close-modal-btn');
+                if (closeBtn) {
+                    const modal = closeBtn.closest('.rpg-modal');
+                    if (modal) modal.style.display = 'none';
+                }
+            });
+
+            // Carga asíncrona y segura del catálogo JSON ampliado con protección XSS (.textContent)
+            fetch('canciones.json')
+                .then(res => res.json())
+                .then(canciones => {
+                    const contenedor = document.getElementById('catalogoKaraoke');
+                    if (!contenedor) return;
+                    contenedor.innerHTML = '';
+
+                    canciones.forEach(item => {
+                        const article = document.createElement('article');
+                        article.className = 'tarjeta-pista frame-box';
+                        article.style.cssText = 'display: flex; align-items: center; gap: 8px; padding: 6px 10px; background: rgba(47, 25, 37, 0.85);';
+
+                        const img = document.createElement('img');
+                        img.src = item.portada || 'verdek.webp';
+                        img.alt = item.titulo;
+                        img.loading = 'lazy';
+                        img.width = 40;
+                        img.height = 40;
+                        img.style.cssText = 'object-fit: cover; border-radius: 6px;';
+
+                        const infoDiv = document.createElement('div');
+                        infoDiv.style.cssText = 'flex: 1; min-width: 0;';
+
+                        const h4 = document.createElement('h4');
+                        h4.style.cssText = 'margin: 0; font-family: var(--font-title); color: #ff007f; font-size: 0.75rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;';
+                        h4.textContent = item.titulo;
+
+                        const p = document.createElement('p');
+                        p.style.cssText = 'margin: 2px 0 0 0; font-size: 0.65rem; color: var(--text-muted);';
+                        p.textContent = `${item.artista} • ${item.genero}`;
+
+                        infoDiv.appendChild(h4);
+                        infoDiv.appendChild(p);
+
+                        const btnAdd = document.createElement('button');
+                        btnAdd.type = 'button';
+                        btnAdd.className = 'promo-add-btn';
+                        btnAdd.setAttribute('data-item', item.titulo);
+                        btnAdd.setAttribute('data-price', item.precio || 15.00); // Precio por pista o reserva
+                        btnAdd.style.cssText = 'background: #ff007f; color: #fff; border: none; padding: 4px 8px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 0.6rem; flex-shrink: 0;';
+                        btnAdd.textContent = '+ Cola';
+
+                        article.appendChild(img);
+                        article.appendChild(infoDiv);
+                        article.appendChild(btnAdd);
+
+                        contenedor.appendChild(article);
+                    });
+                })
+                .catch(err => console.log('Error al cargar catálogo:', err));
+
+            // Envío de reserva directo a WhatsApp de forma segura
+            const reservaForm = document.getElementById('reservaWhatsAppForm');
+            if (reservaForm) {
+                reservaForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const nombreInput = document.getElementById('nombreReserva');
+                    const salaSelect = document.getElementById('salaReserva');
+                    
+                    const nombre = nombreInput ? nombreInput.value : '';
+                    const sala = salaSelect ? salaSelect.value : '';
+
+                    const mensaje = `Hola Karaoke Green!  Deseo confirmar una reserva de sala:\n Nombre: ${nombre}\nSala: ${sala}`;
+                    window.open(`https://wa.me/59175273771?text=${encodeURIComponent(mensaje)}`, '_blank');
+                });
+            }
+        });
+    </script>
+    <script>
+        // Registro del Service Worker para soporte offline
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .catch(err => console.log('Error Service Worker:', err));
+            });
+        }
+    </script>
+</body>
+</html>
